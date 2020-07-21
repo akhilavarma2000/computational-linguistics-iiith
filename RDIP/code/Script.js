@@ -397,3 +397,30 @@ function chk()
             }
         }
     }
+           function display(id)
+    {   var i=0;
+        document.getElementById(id).style.display="none";
+        document.getElementById("shwAns").innerHTML="<button id='hide' onclick='toglee()'>Hide the Correct Sentences</button>";
+       
+        answers="";
+        if(lan1=="eng")
+        {var l=randEng.length;
+           
+            for(i=0;i<l;i++)
+            {  
+                console.log(randEng[i])
+                document.getElementById("shwAns").innerHTML+="<p>"+randEng[i]+"</p><br>";
+                answers+="<p>"+randEng[i]+"</p><br>";
+            }  
+        }
+        if(lan1=="hindi")
+        {var i=0;
+            for(i=0;i<ranhi.length;i++)
+            {
+                console.log(ranhi[i])
+                document.getElementById("shwAns").innerHTML+="<p>"+ranhi[i]+"</p><br>";
+                answers+="<p>"+ranhi[i]+"</p><br>";  
+            }
+        }
+
+    }
