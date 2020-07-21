@@ -1,4 +1,17 @@
-  var en1 = ['John ate an apple before afternoon',
+var lan1;
+var refbutt;
+var WdCount=0;
+var cout=0;
+var allEng=[];
+var allhi=[];
+var RES;
+var RHS;
+var randEng;
+var ranhi;
+
+
+
+            var en1 = ['John ate an apple before afternoon',
                             'before afternoon John ate an apple',
                             'John before afternoon ate an apple'
                             ];
@@ -131,96 +144,8 @@
                     '‌है‌ ‌वहाँ‌ ‌एक‌ ‌बड़ी‌ ‌सी‌ ‌किताब‌',
                     'है‌ ‌वहाँ‌ ‌बड़ी‌ ‌सी‌ ‌एक‌ ‌किताब‌'
         ]
-var lan1;
-var refbutt;
-var WdCount=0;
-var cout=0;
-var allEng=[];
-var allhi=[];
-var RES;
-var RHS;
-var randEng;
-var ranhi;
- function Bfunc(bid,bvalue)
-        {
-           
-            document.getElementById("msgformsent").innerHTML="Formed Sentence <span>(after selecting wd):</span>";
-            document.getElementById("selectedwd").innerHTML +=bvalue+" ";
-            document.getElementById(bid).style.display="none";
-            document.getElementById("reformButton").innerHTML = "<button class='reform' id='' onclick='ref()'> Re-form the sentence</button>";
-            cout++;
-           
-            if(WdCount==cout && WdCount>0)
-            {
-                selectedSentence = document.getElementById("selectedwd").innerHTML;
-                document.getElementById("check-crctness").innerHTML="<button id='check' onclick='chk()'>Check Correctness of the Sentence</button>";                
-                console.log(selectedSentence);
-            }
-            else{
-                document.getElementById("check-crctness").innerHTML="";  
-            }
-function chk()
-    {
-        var result= selectedSentence.trim();
-       
-        if(lan1=='eng')
-        {
-            if (randEng.includes(result))
-            {
-            document.getElementById("crct").innerHTML="Correct Answer!!!";
-            document.getElementById("wrng").innerHTML="";
-            document.getElementById("shwAns").innerHTML=""
 
-            }
-            else{
-                document.getElementById("wrng").innerHTML="Wrong Answer !!!";
-                document.getElementById("crct").innerHTML="";
-                document.getElementById("shwAns").innerHTML="<button id='show' onclick='display(this.id)'>Get Correct Sentence</button>"
-            }
-        }
-        else if(lan1=='hindi')
-        {var i=0;
-            result=result.trim();
-            console.log(result)
-            for(i=0;i<hindiALL.length;i++)
-            { var x=hindiALL[i];
-                if(x.localeCompare(result)==0)
-                {
-                    i=100;
-                    console.log(i)
-                    break;  
-                }    
-            }
-           
-            if(i==100)
-            {
-                document.getElementById("crct").innerHTML="Correct Answer!!!";
-                document.getElementById("wrng").innerHTML="";
-                document.getElementById("shwAns").innerHTML=""
-
-            }
-            else{
-                document.getElementById("wrng").innerHTML="Wrong Answer!!!";
-                document.getElementById("crct").innerHTML="";
-                document.getElementById("shwAns").innerHTML="<button id='getCorrectSentence' onclick='display(this.id)'>Get Correct Sentence</button>"
-
-            }
-        }
-    }
-          function ref()
-    {
-        document.getElementById("jumbled-wd").innerHTML = refbutt;
-        document.getElementById("msgformsent").innerHTML="";
-        document.getElementById("selectedwd").innerHTML ="";
-        document.getElementById("reformButton").innerHTML = "";
-        cout=0;
-        document.getElementById("check-crctness").innerHTML="";
-        document.getElementById("crct").innerHTML="";
-        document.getElementById("wrng").innerHTML="";
-        document.getElementById("shwAns").innerHTML=""
-
-    }
-          function Lang()
+function Lang()
 {
 
      lan1 = document.getElementById("select-lang").value;
@@ -349,7 +274,62 @@ function chk()
         }
     else
         {
-          function chk()
+         
+            document.getElementById("butt-sel-int").innerHTML="";
+            document.getElementById("sent-intro").innerHTML="";
+            document.getElementById("msgformsent").innerHTML="";
+            document.getElementById("selectedwd").innerHTML ="";
+            document.getElementById("reformButton").innerHTML = "";
+            document.getElementById("check-crctness").innerHTML="";
+            document.getElementById("jumbled-wd").innerHTML=" "
+            document.getElementById("crct").innerHTML="";
+            document.getElementById("wrng").innerHTML="";
+            document.getElementById("shwAns").innerHTML="";
+            alert("Please Select A Lang.");
+
+        }  
+}
+   
+    var selectedSentence;
+    function Bfunc(bid,bvalue)
+        {
+           
+            document.getElementById("msgformsent").innerHTML="Formed Sentence <span>(after selecting wd):</span>";
+            document.getElementById("selectedwd").innerHTML +=bvalue+" ";
+            document.getElementById(bid).style.display="none";
+            document.getElementById("reformButton").innerHTML = "<button class='reform' id='' onclick='ref()'> Re-form the sentence</button>";
+            cout++;
+           
+            if(WdCount==cout && WdCount>0)
+            {
+                selectedSentence = document.getElementById("selectedwd").innerHTML;
+                document.getElementById("check-crctness").innerHTML="<button id='check' onclick='chk()'>Check Correctness of the Sentence</button>";                
+                console.log(selectedSentence);
+            }
+            else{
+                document.getElementById("check-crctness").innerHTML="";  
+            }
+
+
+        }
+    function ref()
+    {
+        document.getElementById("jumbled-wd").innerHTML = refbutt;
+        document.getElementById("msgformsent").innerHTML="";
+        document.getElementById("selectedwd").innerHTML ="";
+        document.getElementById("reformButton").innerHTML = "";
+        cout=0;
+        document.getElementById("check-crctness").innerHTML="";
+        document.getElementById("crct").innerHTML="";
+        document.getElementById("wrng").innerHTML="";
+        document.getElementById("shwAns").innerHTML=""
+
+    }
+
+
+ 
+    var answers="";
+    function chk()
     {
         var result= selectedSentence.trim();
        
@@ -397,7 +377,9 @@ function chk()
             }
         }
     }
-           function display(id)
+   
+
+    function display(id)
     {   var i=0;
         document.getElementById(id).style.display="none";
         document.getElementById("shwAns").innerHTML="<button id='hide' onclick='toglee()'>Hide the Correct Sentences</button>";
@@ -424,3 +406,18 @@ function chk()
         }
 
     }
+    function toglee()
+    {
+        if(document.getElementById("hide").innerHTML=='Hide the Correct Sentences')
+        {
+            document.getElementById("shwAns").innerHTML="";
+            document.getElementById("shwAns").innerHTML="<button id='hide' onclick='toglee()'>Get Answers</button>";
+       
+        }
+        else
+        {
+            document.getElementById("shwAns").innerHTML+=answers;
+            document.getElementById("hide").innerHTML="Hide the Correct Sentences";    
+        }
+    }
+
