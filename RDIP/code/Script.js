@@ -220,3 +220,180 @@ function chk()
         document.getElementById("shwAns").innerHTML=""
 
     }
+          function Lang()
+{
+
+     lan1 = document.getElementById("select-lang").value;
+
+    if(lan1==='eng')
+    {
+           
+            document.getElementById("msgformsent").innerHTML="";
+            document.getElementById("selectedwd").innerHTML ="";
+            document.getElementById("reformButton").innerHTML = "";
+            document.getElementById("check-crctness").innerHTML="";
+            document.getElementById("crct").innerHTML="";
+            document.getElementById("wrng").innerHTML="";
+            document.getElementById("shwAns").innerHTML="";
+
+           
+           
+             
+             allEng = [en1,en2,en3,en4,en5,en6,en7,en8,en9,en10];
+
+           
+            document.getElementById("sent-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given wd";
+           
+       
+            document.getElementById("butt-sel-int").innerHTML="(select the buttons in proper order)";
+            document.getElementById("sent-intro").style.color="blue";
+            document.getElementById("sent-intro").style.fontSize="100%";
+            document.getElementById("butt-sel-int").style.color="blue";
+           
+         
+             randEng = allEng[Math.floor(Math.random() * allEng.length)];
+
+           
+             RES = randEng[Math.floor(Math.random() * randEng.length)];
+           
+           
+           
+            var arrwd=RES.split(" ");
+            var wd=[];
+            var p=0,t=0;
+            while(arrwd.length>p)
+            { t = Math.floor(Math.random() * arrwd.length);
+                if(arrwd[t]!="no"){
+                wd[p]=arrwd[t];
+                arrwd[t]="no";
+                p++;
+                }
+            }
+
+         
+            var i=0;
+            cout=0;
+            WdCount = wd.length
+            document.getElementById("jumbled-wd").innerHTML=" "
+            for(i=0;i<WdCount;i++)
+            {
+                document.getElementById("jumbled-wd").innerHTML += "<button class='btn' id='btn"+i+"' value='"+wd[i]+"' onclick='Bfunc(this.id,this.value);'>"+wd[i]+"</button>";  
+            }
+
+
+         
+             refbutt=document.getElementById("jumbled-wd").innerHTML ;
+    }
+       
+
+    else if(lan1==='hindi')
+    {  
+
+             
+                document.getElementById("msgformsent").innerHTML="";
+                document.getElementById("selectedwd").innerHTML ="";
+                document.getElementById("reformButton").innerHTML = "";
+                document.getElementById("check-crctness").innerHTML="";
+                document.getElementById("jumbled-wd").innerHTML=" "
+                document.getElementById("crct").innerHTML="";
+                document.getElementById("wrng").innerHTML="";
+                document.getElementById("shwAns").innerHTML="";
+
+
+         
+                    allhi = [hi1,hi2,hi3,hi4,hi5,hi6,hi7];
+           
+           
+            document.getElementById("sent-intro").innerHTML="Form a sentence (Declarative or Interrogative or any other type) from the given wd";
+           
+           
+            document.getElementById("butt-sel-int").innerHTML="(select the buttons in proper order)";
+            document.getElementById("sent-intro").style.color="rgb(41, 41, 196)";
+            document.getElementById("sent-intro").style.fontSize="100%";
+            document.getElementById("butt-sel-int").style.color="rgb(41, 41, 196)";
+
+     
+                ranhi = allhi[Math.floor(Math.random() * allhi.length)];
+
+     
+                RHS = ranhi[Math.floor(Math.random() * ranhi.length)];
+           
+           
+           
+            var arrwd=RHS.split(" ");
+            var wd=[];
+            var p=0,t=0;
+            while(arrwd.length>p)
+            { t = Math.floor(Math.random() * arrwd.length);
+                if(arrwd[m]!="no"){
+                wd[p]=arrwd[t];
+                arrwd[t]="no";
+                p++;
+                }
+            }
+
+         
+            var i=0;
+            cout=0;
+            WdCount = wd.length
+           
+            for(i=0;i<WdCount;i++)
+            {
+                document.getElementById("jumbled-wd").innerHTML += "<button class='btn' id='btn"+i+"' value='"+wd[i]+"' onclick='Bfunc(this.id,this.value);'>"+wd[i]+"</button>";
+               
+            }
+
+         
+                refbutt=document.getElementById("jumbled-wd").innerHTML;
+               
+        }
+    else
+        {
+          function chk()
+    {
+        var result= selectedSentence.trim();
+       
+        if(lan1=='eng')
+        {
+            if (randEng.includes(result))
+            {
+            document.getElementById("crct").innerHTML="Correct Answer!!!";
+            document.getElementById("wrng").innerHTML="";
+            document.getElementById("shwAns").innerHTML=""
+
+            }
+            else{
+                document.getElementById("wrng").innerHTML="Wrong Answer !!!";
+                document.getElementById("crct").innerHTML="";
+                document.getElementById("shwAns").innerHTML="<button id='show' onclick='display(this.id)'>Get Correct Sentence</button>"
+            }
+        }
+        else if(lan1=='hindi')
+        {var i=0;
+            result=result.trim();
+            console.log(result)
+            for(i=0;i<hindiALL.length;i++)
+            { var x=hindiALL[i];
+                if(x.localeCompare(result)==0)
+                {
+                    i=100;
+                    console.log(i)
+                    break;  
+                }    
+            }
+           
+            if(i==100)
+            {
+                document.getElementById("crct").innerHTML="Correct Answer!!!";
+                document.getElementById("wrng").innerHTML="";
+                document.getElementById("shwAns").innerHTML=""
+
+            }
+            else{
+                document.getElementById("wrng").innerHTML="Wrong Answer!!!";
+                document.getElementById("crct").innerHTML="";
+                document.getElementById("shwAns").innerHTML="<button id='getCorrectSentence' onclick='display(this.id)'>Get Correct Sentence</button>"
+
+            }
+        }
+    }
