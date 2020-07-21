@@ -207,3 +207,16 @@ function chk()
             }
         }
     }
+          function ref()
+    {
+        document.getElementById("jumbled-wd").innerHTML = refbutt;
+        document.getElementById("msgformsent").innerHTML="";
+        document.getElementById("selectedwd").innerHTML ="";
+        document.getElementById("reformButton").innerHTML = "";
+        cout=0;
+        document.getElementById("check-crctness").innerHTML="";
+        document.getElementById("crct").innerHTML="";
+        document.getElementById("wrng").innerHTML="";
+        document.getElementById("shwAns").innerHTML=""
+
+    }
