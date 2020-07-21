@@ -159,3 +159,51 @@ var ranhi;
             else{
                 document.getElementById("check-crctness").innerHTML="";  
             }
+function chk()
+    {
+        var result= selectedSentence.trim();
+       
+        if(lan1=='eng')
+        {
+            if (randEng.includes(result))
+            {
+            document.getElementById("crct").innerHTML="Correct Answer!!!";
+            document.getElementById("wrng").innerHTML="";
+            document.getElementById("shwAns").innerHTML=""
+
+            }
+            else{
+                document.getElementById("wrng").innerHTML="Wrong Answer !!!";
+                document.getElementById("crct").innerHTML="";
+                document.getElementById("shwAns").innerHTML="<button id='show' onclick='display(this.id)'>Get Correct Sentence</button>"
+            }
+        }
+        else if(lan1=='hindi')
+        {var i=0;
+            result=result.trim();
+            console.log(result)
+            for(i=0;i<hindiALL.length;i++)
+            { var x=hindiALL[i];
+                if(x.localeCompare(result)==0)
+                {
+                    i=100;
+                    console.log(i)
+                    break;  
+                }    
+            }
+           
+            if(i==100)
+            {
+                document.getElementById("crct").innerHTML="Correct Answer!!!";
+                document.getElementById("wrng").innerHTML="";
+                document.getElementById("shwAns").innerHTML=""
+
+            }
+            else{
+                document.getElementById("wrng").innerHTML="Wrong Answer!!!";
+                document.getElementById("crct").innerHTML="";
+                document.getElementById("shwAns").innerHTML="<button id='getCorrectSentence' onclick='display(this.id)'>Get Correct Sentence</button>"
+
+            }
+        }
+    }
